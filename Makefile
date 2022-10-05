@@ -25,7 +25,8 @@ nbs: ## DEMO. checks  if best breaks are at root of tree (level=1) or other
 	$(foreach d,$D, lua treego.lua -f $R/data/$d.csv -g nb; )
 
 README.md: glua.lua ## update readme
-	printf "\n# NB\nNaive baues classifier\n" > README.md
+	printf "\n# GLUA\nSome gneral LUA  functions\n" > README.md
+	printf "<img src=lib.png align=right>" >> README.md
 	lua $R/readme/readme.lua $^ >> README.md
 
 install: $R/dotrc $R/readme $R/data
