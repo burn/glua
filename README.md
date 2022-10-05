@@ -1,10 +1,10 @@
 
 # GLUA
 Some gneral LUA  functions
-<img src=lib.png align=right>
+<img src=lib.png width=400 align=right>
 #	glua.lua	
 
-glua.lua (pronounced "glue"). Some standard LUA functions	
+Some general LUA functions.    	
 (c) 2022 Tim Menzies <timm@ieee.org> BSD-2 license	
 ## Linting	
 

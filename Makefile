@@ -26,7 +26,7 @@ nbs: ## DEMO. checks  if best breaks are at root of tree (level=1) or other
 
 README.md: glua.lua ## update readme
 	printf "\n# GLUA\nSome gneral LUA  functions\n" > README.md
-	printf "<img src=lib.png align=right>" >> README.md
+	printf "<img src=lib.png width=400 align=right>" >> README.md
 	lua $R/readme/readme.lua $^ >> README.md
 
 install: $R/dotrc $R/readme $R/data

@@ -1,4 +1,4 @@
--- glua.lua (pronounced "glue"). Some standard LUA functions
+-- Some general LUA functions.    
 -- (c) 2022 Tim Menzies <timm@ieee.org> BSD-2 license
 local it={}
 
