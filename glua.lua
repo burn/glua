@@ -1,5 +1,6 @@
 -- Some general LUA functions.    
--- (c) 2022 Tim Menzies <timm@ieee.org> BSD-2 license
+-- (c)2022 Tim Menzies <timm@ieee.org> BSD-2 license
+
 local it={}
 
 -- ## Linting
@@ -118,7 +119,6 @@ function it.o(t,  seen) --> str; table to string (recursive)
   local function filter(k) return it.fmt(":%s %s",k,it.o(t[k],seen)) end
   local u   = #t>0 and it.map(t,tostring) or it.map(it.keys(t),filter)
   return pre.."{".. table.concat(u," ").."}" end
-
 
 -- ## Objects
 local _id=0

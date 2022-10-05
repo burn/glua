@@ -19,22 +19,14 @@ help: ## print help
 		| awk 'BEGIN {FS = ":.*?## "}\
 	               {printf "  \033[36m%-10s\033[0m %s\n", $$1, $$2}'
 
-D=auto2 auto93 nasa93dem china coc1000 healthCloseIsses12mths0011-easy \
-   healthCloseIsses12mths0001-hard pom SSN SSM#
-nbs: ## DEMO. checks  if best breaks are at root of tree (level=1) or other
-	$(foreach d,$D, lua treego.lua -f $R/data/$d.csv -g nb; )
-
 README.md: glua.lua ## update readme
 	printf "\n# GLUA\n(pronounced 'glue')\n" > README.md
 	printf "<img src=lib.png width=250 align=right>" >> README.md
 	lua $R/readme/readme.lua $^ >> README.md
 
-install: $R/dotrc $R/readme $R/data
+install: $R/readme 
 
 $R/readme:; cd $R; git clone https://github.com/timm/readme
-$R/data  :; cd $R; git clone https://github.com/timm/data
-$R/dotrc :; cd $R; git clone https://github.com/timm/dotrc; 
-	printf "\n\nSuggestion: consider cd $R/dotrc; make install\n\n"
 
 itso: ## commit to Git. To add a message, set `y=message`.
 	git commit -am "$y"; git push; git status
