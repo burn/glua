@@ -1,6 +1,6 @@
 
 # GLUA
-Some gneral LUA  functions
+(pronounced 'glue')
 <img src=lib.png width=400 align=right>
 #	glua.lua	
 
