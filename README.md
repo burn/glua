@@ -1,7 +1,7 @@
 
 # GLUA
 (pronounced 'glue')
-<img src=lib.png width=300 align=right>
+<img src=lib.png width=250 align=right>
 #	glua.lua	
 
 Some general LUA functions.    	
