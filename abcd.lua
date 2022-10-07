@@ -98,3 +98,40 @@ function go.abcd(  abcd)
   print(ABCD:pretty( abcd:report() )) end
 
 go.abcd()
+
+-- |	yes	|	yes	|
+-- |	yes	|	yes	|
+-- |	yes	|	yes	|
+-- |	yes	|	yes	|
+-- |	yes	|	yes	|
+-- |	yes	|	yes	|
+-- |	no	|	yes	|
+-- |	no	|	no	|
+-- |	no	|	yes	|
+-- |	no	|	no	|
+-- |	maybe	|	yes	|
+-- |	maybe	|	maybe	|
+-- |	maybe	|	no	|
+-- |	maybe	|	yes	|
+-- |	maybe	|	maybe	|
+-- |	maybe	|	no	|
+-- |	maybe	|	yes	|
+-- |	maybe	|	maybe	|
+-- |	maybe	|	no	|
+-- |	maybe	|	yes	|
+-- |	maybe	|	maybe	|
+-- |	maybe	|	no	|
+-- |	maybe	|	yes	|
+-- |	maybe	|	maybe	|
+-- |	maybe	|	no	|
+-- |	no	|	yes	|
+-- |	no	|	maybe	|
+-- |	no	|	no	|
+--
+-- #        db |         rx |    a |    b |    c |    d | acc |  pd|  pf | prec |   f |   g |
+-- #       --- |        --- |  --- |  --- |  --- |  --- | --- | ---| --- |  --- | --- | --- |
+--             |            |    8 |    0 |    1 |    5 |  93 | 100|  11 |   83 |  91 |  94 | maybe
+--             |            |   11 |    1 |    0 |    2 |  93 |  67|   0 |  100 |  80 |  80 | no
+--             |            |    8 |    0 |    0 |    6 |  93 | 100|   0 |  100 | 100 | 100 | yes
+--
+--
