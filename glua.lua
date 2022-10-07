@@ -145,12 +145,13 @@ function it.run(funs,t) --> nfails; runs all `funs` (or `t.go`), resetting optio
   local fails,defaults = 0,{}
   for k,v in pairs(t) do defaults[k]=v end
   for _,k in pairs(it.keys(funs)) do
-    if t.go == "all" or t.go==k then
-      for k,v in pairs(defaults) do t[k]=v end
-      it.srand(t.seed or 937162211)
-      if funs[k]() == false 
-      then print(it.fmt("# ❌ %s",k)); fails=fails+1 
-      else print(it.fmt("# ✅ %s",k)) end end end
+    if t.go == "ls" then print("\t",k) else
+      if t.go == "all" or t.go==k then
+        for k,v in pairs(defaults) do t[k]=v end
+        it.srand(t.seed or 937162211)
+        if funs[k]() == false 
+        then print(it.fmt("# ❌ %s",k)); fails=fails+1 
+        else print(it.fmt("# ✅ %s",k)) end end end end
    it.rogues()
    return fails end
 
