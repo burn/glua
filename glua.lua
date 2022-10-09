@@ -10,9 +10,30 @@ function it.rogues() --> nil; report rogue locals
     if not b4[k] then print( it.fmt("#W ?%s %s",k,type(v)) ) end end end
 
 -- ## Maths
+function it.same(x,...) --> x; return `x` unmodified
+  return x end
+
 function it.rnd(n, nPlaces) --> num. return `n` rounded to `nPlaces`
   local mult = 10^(nPlaces or 3)
   return math.floor(n * mult + 0.5) / mult end
+
+function it.sd(ns,fun) --> num; return standard deviation
+  fun = fun or same
+  local nall,mu,m2 = 0,0,0
+  for _,n in pairs(ns) do
+    n = fun(n)
+    if n ~= "?" then 
+      nall  = nall + 1
+      local d = n - mu
+      mu = mu + d/nall
+      m2 = m2 + d*(n - mu) end end
+  return (nall<2 or m2<0) and 0 or (m2/(nall-1))^0.5 end 
+
+function it.ent(ss) --> num; return entropy
+  local function p(x) return x*math.log(x,2) end
+  local e, u = 0, it.map(ss, function(s) if s~="?" then return s end end)
+  for _,n in pairs(u) do e = e - p(n/#u) end
+  return e end
 
 -- ### Random number generator
 -- The LUA doco says its random number generator is not stable across platforms.
@@ -62,9 +83,6 @@ function it.map(t, fun)  --> t; map function `fun`(v) over list (skip nil result
 
 function it.push(t, x) --> any; push `x` to end of list; return `x` 
   table.insert(t,x); return x end
-
-function it.sd(t) --> num; sorted list standard deviation= (90-10)th percentile/2.58
-  return (t[(.9*#t)//1] - t[(.1*#t)//1]) / 2.58 end
 
 function it.slice(t, go, stop, inc) --> t; return `t` from `go`(=1) to `stop`(=#t), by `inc`(=1)
   local u={}; for j=(go or 1)//1,(stop or #t)//1,(inc or 1)//1 do u[1+#u]=t[j] end
