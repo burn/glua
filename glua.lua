@@ -29,12 +29,6 @@ function l.sd(ns,fun) --> num; return standard deviation
       m2 = m2 + d*(n - mu) end end
   return (nall<2 or m2<0) and 0 or (m2/(nall-1))^0.5 end 
 
-function l.ent(ss) --> num; return entropy
-  local function p(x) return x*math.log(x,2) end
-  local e, u = 0, l.map(ss, function(s) if s~="?" then return s end end)
-  for _,n in pairs(u) do e = e - p(n/#u) end
-  return e end
-
 -- ### Random number generator
 -- The LUA doco says its random number generator is not stable across platforms.
 -- Hence, we use our own (using Park-Miller).
