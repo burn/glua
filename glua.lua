@@ -161,8 +161,8 @@ function l.run(t,funs) --> nfails; runs all `funs` (or `t.go`), resetting option
       for k,v in pairs(defaults) do t[k]=v end      -- reset settings from cache
       l.srand(t.seed or 937162211)                  -- reset random seed
       if funs[k]() == false                         -- if anything fails
-      then print(l.fmt("# ❌ %s",k)); fails=fails+1 -- update fails counter
-      else print(l.fmt("# ✅ %s",k)) end end end    -- check for rogue globals
+      then print(l.fmt("❌ %s",k)); fails=fails+1 -- update fails counter
+      else print(l.fmt("✅ %s",k)) end end end    -- check for rogue globals
    l.rogues()
    return fails end
 

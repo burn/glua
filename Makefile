@@ -1,6 +1,6 @@
 -include ../etc/Makefile
 
-README.md: glua.lua ## update readme
+README.md: ../readme/readme.lua glua.lua ## update readme
 	printf "\n# GLUA\n(pronounced 'glue')\n" > README.md
-	printf "<img src=lib.png width=250 align=right>" >> README.md
-	lua ../readme/readme.lua $^ >> README.md
+	printf "<img src='img/lib.png' width=150 align=right>" >> README.md
+	lua $^ $(filter-out $<,$^) >> README.md
