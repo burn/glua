@@ -1,15 +1,3 @@
-#            ___                         
-#           /\_ \                        
-#    __     \//\ \     __  __     __     
-#  /'_ `\     \ \ \   /\ \/\ \  /'__`\   
-# /\ \L\ \     \_\ \_ \ \ \_\ \/\ \L\.\_ 
-# \ \____ \    /\____\ \ \____/\ \__/.\_\
-#  \/___L\ \   \/____/  \/___/  \/__/\/_/
-#    /\____/                             
-#    \_/__/                              
-
-MAKEFLAGS += --silent
-SHELL=/bin/bash
 R=$(shell dirname $(shell git rev-parse --show-toplevel))
 
 help: ## print help
