@@ -18,7 +18,7 @@ function l.rnd(n, nPlaces) --> num. return `n` rounded to `nPlaces`
   return math.floor(n * mult + 0.5) / mult end
 
 function l.sd(ns,fun) --> num; return standard deviation
-  fun = fun or same
+  fun = fun or l.same
   local nall,mu,m2 = 0,0,0
   for _,n in pairs(ns) do
     n = fun(n)
@@ -159,20 +159,19 @@ function l.cli(t) --> t; alters contents of options in `t` from the  command-lin
   if t.help then os.exit(print(t._help)) end
   return t end
 
-function l.run(funs,t) --> nfails; runs all `funs` (or `t.go`), resetting options & seed before each
+function l.run(t,funs) --> nfails; runs all `funs` (or `t.go`), resetting options & seed before each
   local fails,defaults = 0,{}
-  for k,v in pairs(t) do defaults[k]=v end
-  for _,k in pairs(l.keys(funs)) do
-    if t.go == "ls" then print("\t",k) else
-      if t.go == "all" or t.go==k then
-        for k,v in pairs(defaults) do t[k]=v end
-        l.srand(t.seed or 937162211)
-        if funs[k]() == false 
-        then print(l.fmt("# ❌ %s",k)); fails=fails+1 
-        else print(l.fmt("# ✅ %s",k)) end end end end
+  for k,v in pairs(t) do defaults[k]=v end          -- cache old settings
+  for _,k in pairs(l.keys(funs)) do                 -- for all functions
+    if t.go == "all" or t.go==k then                -- if we want to run it...
+      for k,v in pairs(defaults) do t[k]=v end      -- reset settings from cache
+      l.srand(t.seed or 937162211)                  -- reset random seed
+      if funs[k]() == false                         -- if anything fails
+      then print(l.fmt("# ❌ %s",k)); fails=fails+1 -- update fails counter
+      else print(l.fmt("# ✅ %s",k)) end end end    -- check for rogue globals
    l.rogues()
    return fails end
 
 -- -------------------------------
 -- That's all folks.
-return it
+return l
