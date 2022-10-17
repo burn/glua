@@ -150,7 +150,7 @@ function l.cli(t) --> t; alters contents of options in `t` from the  command-lin
       if x=="-"..(k:sub(1,1)) or x=="--"..k then
          v = v=="false" and "true" or v=="true" and "false" or arg[n+1] end end
     t[k] = l.coerce(v) end
-  if t.help then os.exit(print(t._help)) end
+  if t.help then os.exit(print("\n"..t._help)) end
   return t end
 
 function l.run(t,funs) --> nfails; runs all `funs` (or `t.go`), resetting options & seed before each
