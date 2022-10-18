@@ -1,5 +1,7 @@
 -- Some general LUA functions.    
 -- (c)2022 Tim Menzies <timm@ieee.org> BSD-2 license
+--    
+-- For examples on how to use this code, see https://tinyurl.com/gluaeg.
 
 local l={}
 
